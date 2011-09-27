@@ -8,10 +8,10 @@ end
 
 MemberResource::Member.create connection do
   member do
-    add_prop :name => "Bill"
+    add_prop :name => "J1"
     add_prop :card_num => "1234"
   end
   member do
-    add_prop :name => "Ben", :card_num => "9999"
+    add_prop :name => "J2", :card_num => "9999"
   end
 end

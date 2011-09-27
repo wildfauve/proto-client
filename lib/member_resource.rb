@@ -4,6 +4,8 @@ require 'json'
 module MemberResource
 
   class ResourceConnection
+    
+    @@token = "admin"
 
     attr_accessor :host, :resource_entry, :format
 
@@ -20,13 +22,13 @@ module MemberResource
       body = represent.send @format
       puts "Resource Create: #{url}, #{body}"
       begin
-        last_resp = RestClient.post(url, body, :content_type => @format, :accept => @format)
+        last_resp = RestClient.post(url, body, :content_type => @format, :accept => @format, :params => {:token => @@token})
         if @format == :json
           puts "Status Code: #{last_resp.code}  Headers: #{last_resp.headers[:location]}"
           puts "Response Body: #{JSON::parse last_resp}"
         end
       rescue => e
-        puts e.code
+        puts "Server Exception Occured: #{e.response.code}"
       end
     end
 
