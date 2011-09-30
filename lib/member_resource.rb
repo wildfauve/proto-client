@@ -37,7 +37,8 @@ module MemberResource
   class Member
     
     @@template = {:name => String, 
-                  :card_num => String} 
+                  :card_num => String,
+                  :email => String} 
     
     def self.create(connection, &block)
       @@connection = connection
